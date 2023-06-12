@@ -1,0 +1,16 @@
+.games-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.games-fields-wrap {
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media only screen and (min-width: 600px) {
+    flex-direction: row;
+  }
+}

@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import "./App.css";
+import { dictionaryData } from "../data/dictionaryData";
 
+import FailedGame from "../components/FailedGame/FailedGame";
+import CompletedGame from "../components/CompletedGame/CompletedGame";
 import Games from "./components/Games/Games";
 import Field from "./components/Field/Field";
-import { dictionaryData } from "./data/dictionaryData";
-import FailedGame from "./components/FailedGame/FailedGame";
-import CompletedGame from "./components/CompletedGame/CompletedGame";
 
-const maxAttempts = 5;
+const maxAttempts = 50;
 
 const initialAttemptState = [0];
 
@@ -24,6 +24,8 @@ function NewApp() {
   }, []);
 
   const [guessingWord, setGuessingWord] = useState(wordToGuess);
+
+  // console.log(guessingWord);
 
   const [attempts, setAttempts] = useState(initialAttemptState);
 
@@ -67,8 +69,6 @@ function NewApp() {
     return <CompletedGame handleStartNewGame={handleStartNewGame} />;
   }
 
-  console.log(guessingWord, "guessing word");
-
   return (
     <div className="container">
       <div
@@ -78,24 +78,26 @@ function NewApp() {
         }}
       >
         {guessingWord.split("").map((word: string, index: number) => (
-          <div
-            style={{
-              background: "red",
-            }}
-          >
-            <Field value={word} key={index} />
-          </div>
+          <Field value={word} key={index} />
         ))}
       </div>
-      {attempts.map((_, index) => (
-        <Games
-          key={index + " " + guessingWord}
-          guessingWord={guessingWord}
-          appendAttempt={appendAttempt}
-          handleCompletedGame={handleCompletedGame}
-          showActionButtons={index === attempts.length - 1}
-        />
-      ))}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 20,
+        }}
+      >
+        {attempts.map((data, index) => (
+          <Games
+            key={index + " " + guessingWord}
+            guessingWord={guessingWord}
+            appendAttempt={appendAttempt}
+            handleCompletedGame={handleCompletedGame}
+            showSubmit={index === attempts.length - 1}
+          />
+        ))}
+      </div>
     </div>
   );
 }
