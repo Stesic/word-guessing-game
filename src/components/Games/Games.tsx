@@ -9,13 +9,14 @@ import {
   validateLetter,
 } from "../../helpers/fn";
 import { EGameStatus } from "../../types";
+import ReloadButton from "../ReloadButton/ReloadButton";
 
 type Props = {
   guessingWord: string;
   appendAttempt: () => void;
   handleCompletedGame: () => void;
   showActionButtons: boolean;
-  handleStartNewGame?: () => void;
+  handleStartNewGame: () => void;
 };
 
 function Games({
@@ -147,13 +148,13 @@ function Games({
         })}
       </div>
       {showActionButtons && (
-        <>
+        <div className="buttons-container">
           <SubmitButton
             disabled={!allValuesEntered}
             handleClick={handleSubmit}
           />
-          <div onClick={handleStartNewGame}>reset</div>
-        </>
+          <ReloadButton handleClick={handleStartNewGame} />
+        </div>
       )}
     </div>
   );

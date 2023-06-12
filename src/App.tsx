@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import "./App.css";
 
 import Games from "./components/Games/Games";
-import Field from "./components/Field/Field";
 import { dictionaryData } from "./data/dictionaryData";
 import FailedGame from "./components/FailedGame/FailedGame";
 import CompletedGame from "./components/CompletedGame/CompletedGame";
@@ -78,6 +77,7 @@ function NewApp() {
           appendAttempt={appendAttempt}
           handleCompletedGame={handleCompletedGame}
           showActionButtons={index === attempts.length - 1}
+          handleStartNewGame={handleStartNewGame}
         />
       ))}
     </div>

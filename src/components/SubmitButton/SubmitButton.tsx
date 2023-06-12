@@ -11,7 +11,7 @@ function SubmitButton({ handleClick, disabled }: Props) {
         if (disabled) return;
         handleClick();
       }}
-      className={`submit-btn slide ${disabled && "disabled"}`}
+      className={`submit-btn  ${disabled && "disabled"}`}
     >
       Proveri
     </div>
