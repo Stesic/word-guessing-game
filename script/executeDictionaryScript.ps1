@@ -1,12 +1,13 @@
 
+docker cp "6ae48797e0c9:/var/www/assets/dictionary.txt" "C:\Users\IvanS\Desktop\zadatak\word-guessing\script\dictionary.txt"
 
 #create a new file
-$outputFile = "C:\Users\IvanS\Desktop\zadatak\dictionaryData.js"
+$outputFile = "C:\Users\IvanS\Desktop\word-guessing\script\dictionaryData.js"
 New-Item -ItemType File -Path $newFile
 
 
 #get raw dictionary content
-$dictionaryPath = "C:\Users\IvanS\Desktop\zadatak\dictionary.txt"
+$dictionaryPath = "C:\Users\IvanS\Desktop\zadatak\word-guessing\dictionary.txt"
 $rawDictionaryContent = Get-Content $dictionaryPath
 
 # Define the desired length

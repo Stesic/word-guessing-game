@@ -1,5 +1,14 @@
-.reloadButton {
+.reloadButton i {
   cursor: pointer;
+  color: #7367f0;
+}
+
+.reloadButton i {
+  transition: transform 0.5s;
+}
+.reloadButton:hover i {
+  transform: scale(1.1);
+  color: #4d4ae8;
 }
 
 .reloadButton:before {

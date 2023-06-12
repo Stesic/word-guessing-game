@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import "./App.css";
 
 import Games from "./components/Games/Games";
@@ -11,16 +11,13 @@ const maxAttempts = 5;
 const initialAttemptState = [0];
 
 const getGussingWord = () => {
-  const randomIndex = Math.floor(Math.random() * dictionaryData?.length);
-  return dictionaryData
-    .filter((word) => word.length === 6)
-    [randomIndex]?.toLowerCase();
+  const filterDictionary = dictionaryData.filter((word) => word.length === 6);
+  const randomIndex = Math.floor(Math.random() * filterDictionary?.length);
+  return filterDictionary[randomIndex]?.toLowerCase();
 };
 
-function NewApp() {
-  const wordToGuess = useMemo(() => {
-    return getGussingWord();
-  }, []);
+function App() {
+  const wordToGuess = getGussingWord();
 
   const [guessingWord, setGuessingWord] = useState(wordToGuess);
 
@@ -46,16 +43,8 @@ function NewApp() {
     setGuessingWord(newWordToGuess);
   }, []);
 
-  useEffect(() => {
-    window.onkeydown = function (e) {
-      if (e.key.toLowerCase() === "tab") {
-        return false;
-      }
-    };
-  }, []);
-
   if (!guessingWord) {
-    return null;
+    return <p>Loading</p>;
   }
 
   if (attempts.length - 1 === maxAttempts) {
@@ -66,7 +55,7 @@ function NewApp() {
     return <CompletedGame handleStartNewGame={handleStartNewGame} />;
   }
 
-  console.log(guessingWord, "guessing word");
+  console.log(wordToGuess, "WORD TO GUESS");
 
   return (
     <div className="container">
@@ -84,4 +73,4 @@ function NewApp() {
   );
 }
 
-export default NewApp;
+export default App;

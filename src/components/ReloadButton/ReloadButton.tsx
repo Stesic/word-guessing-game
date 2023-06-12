@@ -13,7 +13,6 @@ function ReloadButton({ handleClick }: Props) {
         className="fa fa-refresh "
         style={{
           fontSize: "48px",
-          color: "rgb(50, 50, 60)",
         }}
       ></i>
     </div>

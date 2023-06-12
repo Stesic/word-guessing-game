@@ -12,7 +12,11 @@ type Props = {
 function Field({ value, gameStatus, nameOfClass }: Props) {
   const classes = gameStatus === EGameStatus.Submited ? nameOfClass : "regular";
 
-  return <div className={`base ${classes}`}>{value}</div>;
+  return (
+    <div className={`base ${classes} `}>
+      <span className={value && "lineUp"}>{value}</span>
+    </div>
+  );
 }
 
 export default React.memo(Field);

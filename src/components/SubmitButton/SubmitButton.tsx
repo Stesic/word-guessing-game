@@ -13,7 +13,7 @@ function SubmitButton({ handleClick, disabled }: Props) {
       }}
       className={`submit-btn  ${disabled && "disabled"}`}
     >
-      Proveri
+      <span>Proveri</span>
     </div>
   );
 }
