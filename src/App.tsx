@@ -6,7 +6,7 @@ import { dictionaryData } from "./data/dictionaryData";
 import FailedGame from "./components/FailedGame/FailedGame";
 import CompletedGame from "./components/CompletedGame/CompletedGame";
 
-const maxAttempts = 5;
+const maxAttempts = 7;
 
 const initialAttemptState = [0];
 
@@ -48,7 +48,9 @@ function App() {
   }
 
   if (attempts.length - 1 === maxAttempts) {
-    return <FailedGame handleStartNewGame={handleStartNewGame} />;
+    return (
+      <FailedGame handleStartNewGame={handleStartNewGame} word={guessingWord} />
+    );
   }
 
   if (isCompleted) {

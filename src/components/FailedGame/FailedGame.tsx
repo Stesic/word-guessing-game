@@ -1,11 +1,13 @@
-import React from "react";
 import StartNewGame from "../StartNewGame/StartNewGame";
 
+import "./FailedGame.style.css";
+
 type Props = {
-  handleStartNewGame: any;
+  handleStartNewGame: () => void;
+  word: string;
 };
 
-function FailedGame({ handleStartNewGame }: Props) {
+function FailedGame({ handleStartNewGame, word }: Props) {
   return (
     <div className="container">
       <img
@@ -14,6 +16,14 @@ function FailedGame({ handleStartNewGame }: Props) {
         src="/images/betterLuck.svg"
         alt="better-luck"
       />
+      <div className="failed-word">
+        <b>
+          Your word was:{" "}
+          <i>
+            <q>{word.toUpperCase()}</q>
+          </i>
+        </b>
+      </div>
       <StartNewGame handleClick={handleStartNewGame} />
     </div>
   );
