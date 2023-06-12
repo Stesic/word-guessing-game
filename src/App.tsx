@@ -71,22 +71,6 @@ function NewApp() {
 
   return (
     <div className="container">
-      <div
-        style={{
-          display: "flex",
-          gap: 10,
-        }}
-      >
-        {guessingWord.split("").map((word: string, index: number) => (
-          <div
-            style={{
-              background: "red",
-            }}
-          >
-            <Field value={word} key={index} />
-          </div>
-        ))}
-      </div>
       {attempts.map((_, index) => (
         <Games
           key={index + " " + guessingWord}
