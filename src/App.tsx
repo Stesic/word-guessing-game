@@ -2,16 +2,16 @@ import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 
 import Game from "./components/Game/Game";
-import { dictionaryData } from "./data/dictionaryData";
 import FailedGame from "./components/FailedGame/FailedGame";
 import CompletedGame from "./components/CompletedGame/CompletedGame";
+import { dictionaryData } from "./data/dictionaryData";
 
 const maxAttempts = 7;
 
 const initialAttemptState = [0];
 
 const getGussingWord = () => {
-  const filterDictionary = dictionaryData.filter((word) => word.length === 6);
+  const filterDictionary = dictionaryData.filter((word) => word?.length === 6);
   const randomIndex = Math.floor(Math.random() * filterDictionary?.length);
   return filterDictionary[randomIndex]?.toLowerCase();
 };

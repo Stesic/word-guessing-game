@@ -30,5 +30,6 @@ export function getIndexesOfChar(str: string, char: string) {
 
 export function validateLetter(char: string) {
   const regex = /^[A-Za-z]$/;
-  return regex.test(char);
+  const cirilicLetters = ["š", "đ", "č", "ć", "ž"];
+  return regex.test(char) || cirilicLetters.includes(char);
 }
