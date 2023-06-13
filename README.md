@@ -1,8 +1,8 @@
 # Word guessing game
 
-##This project is written in React.js with pure css. 
+## This project is written in React.js with pure css. 
 
-##Project is published with Netlify and you can find it on this link [https://word-guessing-game-task.netlify.app/](word guessing game) 
+## Project is published with Netlify and you can find it on this link [https://word-guessing-game-task.netlify.app/](word guessing game) 
 
 ## Dictionary script
 
