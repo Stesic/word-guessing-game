@@ -17,7 +17,7 @@ function useHandleKyePressEvent({ setKeysPressed }: Props) {
         if (emptyValue === -1) return prev;
 
         const updatedData = [...prev];
-        updatedData[emptyValue] = event.key;
+        updatedData[emptyValue] = event.key.toLowerCase();
         return updatedData;
       });
     };

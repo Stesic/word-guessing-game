@@ -3,12 +3,7 @@ const fs = require("fs");
 
 const sourcePath = "6ae48797e0c9:/var/www/assets/dictionary.txt";
 
-// const dictionaryPath =
-//   "C:/Users/IvanS/Desktop/zadatak/word-guessing/script/dictio.txt";
 const dictionaryPath = "./dictionary.txt";
-
-// const outputFile =
-//   "C:/Users/IvanS/Desktop/zadatak/word-guessing/src/data/dictionaryData.ts";
 
 const outputFile = "./dictionaryData.ts";
 

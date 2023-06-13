@@ -38,7 +38,7 @@ function Game({
     keysPressed.findIndex((element) => element === "") === -1;
 
   const handleSubmit = () => {
-    const currentWord = keysPressed.join("").toLowerCase();
+    const currentWord = keysPressed.join("");
     const isCorrect = currentWord === guessingWord;
     if (isCorrect) {
       handleCompletedGame();

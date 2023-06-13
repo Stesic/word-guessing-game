@@ -13,7 +13,7 @@ const initialAttemptState = [0];
 const getGussingWord = () => {
   const filterDictionary = dictionaryData.filter((word) => word?.length === 6);
   const randomIndex = Math.floor(Math.random() * filterDictionary?.length);
-  return filterDictionary[randomIndex]?.toLowerCase();
+  return filterDictionary[randomIndex];
 };
 
 function App() {
