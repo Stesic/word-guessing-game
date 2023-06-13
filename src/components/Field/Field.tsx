@@ -14,7 +14,7 @@ function Field({ value, gameStatus, nameOfClass }: Props) {
 
   return (
     <div className={`base ${classes} `}>
-      <span className={value && "lineUp"}>{value}</span>
+      <span className={value && "line-up"}>{value}</span>
     </div>
   );
 }
