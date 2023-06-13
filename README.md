@@ -8,5 +8,6 @@
 
 In the project files, you can find ```dataScript.ts``` file which was used to get and format dictionary data used in the project.
 
-## Hint
-### If you open console you will find guessing word.
+### Hint - If you open console you will find guessing word.
+
+
