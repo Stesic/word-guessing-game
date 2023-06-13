@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Word guessing game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##This project is written in React.js with pure css. 
+
+##Project is published with Netlify and you can find it on this link [word guessing game]([https://github.com/facebook/create-react-app](https://word-guessing-game-task.netlify.app/)).
 
 ## Available Scripts
 
