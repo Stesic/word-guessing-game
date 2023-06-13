@@ -6,6 +6,6 @@
 
 ### Dictionary script
 
-In the project files, you can find ```dataScript.ts``` file. Execute it and you will get dictionary data on the same location. 
+In the project files, you can find ```dataScript.ts``` file which was used to get and format dictionary data used in the project.
 
 
