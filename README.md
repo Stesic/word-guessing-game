@@ -2,7 +2,7 @@
 
 ##This project is written in React.js with pure css. 
 
-##Project is published with Netlify and you can find it on this link [word guessing game]([https://github.com/facebook/create-react-app](https://word-guessing-game-task.netlify.app/)).
+##Project is published with Netlify and you can find it on this link [[word guessing game](https://github.com/facebook/create-react-app](https://word-guessing-game-task.netlify.app/)]([word guessing game])).
 
 ## Available Scripts
 
