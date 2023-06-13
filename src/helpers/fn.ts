@@ -1,5 +1,5 @@
 export function countCharacters(str: string) {
-  var charCount = {} as any;
+  var charCount = {} as Record<string, number>;
 
   if (!str) return {};
 

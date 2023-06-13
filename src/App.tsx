@@ -1,7 +1,7 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 
-import Games from "./components/Games/Games";
+import Game from "./components/Game/Game";
 import { dictionaryData } from "./data/dictionaryData";
 import FailedGame from "./components/FailedGame/FailedGame";
 import CompletedGame from "./components/CompletedGame/CompletedGame";
@@ -17,9 +17,7 @@ const getGussingWord = () => {
 };
 
 function App() {
-  const wordToGuess = getGussingWord();
-
-  const [guessingWord, setGuessingWord] = useState(wordToGuess);
+  const [guessingWord, setGuessingWord] = useState("");
 
   const [attempts, setAttempts] = useState(initialAttemptState);
 
@@ -43,8 +41,13 @@ function App() {
     setGuessingWord(newWordToGuess);
   }, []);
 
+  useEffect(() => {
+    const wordToGuess = getGussingWord();
+    setGuessingWord(wordToGuess);
+  }, []);
+
   if (!guessingWord) {
-    return <p>Loading</p>;
+    return <></>;
   }
 
   if (attempts.length - 1 === maxAttempts) {
@@ -57,12 +60,12 @@ function App() {
     return <CompletedGame handleStartNewGame={handleStartNewGame} />;
   }
 
-  console.log(wordToGuess, "WORD TO GUESS");
+  console.log("WORD TO GUESS IS ", `"${guessingWord}"`);
 
   return (
     <div className="container">
       {attempts.map((_, index) => (
-        <Games
+        <Game
           key={index + " " + guessingWord}
           guessingWord={guessingWord}
           appendAttempt={appendAttempt}

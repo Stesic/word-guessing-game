@@ -1,30 +1,19 @@
-import React from "react";
 import StartNewGame from "../StartNewGame/StartNewGame";
 import Confetti from "../Confetti/Confetti";
 
+import "./CompletedGame.style.css";
+
 type Props = {
-  handleStartNewGame: any;
+  handleStartNewGame: () => void;
 };
 
 function CompletedGame({ handleStartNewGame }: Props) {
   return (
     <div className="container">
-      <div
-        style={{
-          width: "400px",
-          height: "200px",
-          position: "relative",
-          marginLeft: "300px",
-        }}
-      >
+      <div className="confetti-wrap">
         <Confetti />
       </div>
-      <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
+      <div className="new-game-wrap">
         <StartNewGame handleClick={handleStartNewGame} />
       </div>
     </div>

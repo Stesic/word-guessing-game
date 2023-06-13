@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 
-import "./Games.style.css";
+import "./Game.style.css";
 import Field from "../Field/Field";
 import SubmitButton from "../SubmitButton/SubmitButton";
-import {
-  countCharacters,
-  getIndexesOfChar,
-  validateLetter,
-} from "../../helpers/fn";
-import { EGameStatus } from "../../types";
+import { countCharacters, getIndexesOfChar } from "../../helpers/fn";
+import { ECharStatus, EGameStatus } from "../../types";
 import ReloadButton from "../ReloadButton/ReloadButton";
+import useHandleKyePressEvent from "./useHandleKyePressEvent";
 
 type Props = {
   guessingWord: string;
@@ -19,18 +16,21 @@ type Props = {
   handleStartNewGame: () => void;
 };
 
-function Games({
+function Game({
   guessingWord,
   appendAttempt,
   handleCompletedGame,
   showActionButtons,
   handleStartNewGame,
 }: Props) {
-  const countedChars = countCharacters(guessingWord);
-
   const [keysPressed, setKeysPressed] = useState(["", "", "", "", "", ""]);
+
+  useHandleKyePressEvent({
+    setKeysPressed,
+  });
+
   const [gameStatus, setGameStatus] = useState(EGameStatus.Ongoing);
-  const [styleResults, setStyleResults] = useState<string[]>([]);
+  const [charsStatusses, setCharsStatusses] = useState<ECharStatus[]>([]);
 
   const [numberOfCharacters, setNumberOfCharacters] = useState({});
 
@@ -51,39 +51,19 @@ function Games({
   };
 
   useEffect(() => {
+    const countedChars = countCharacters(guessingWord);
     setNumberOfCharacters(countedChars);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [guessingWord]);
 
   useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      const keyPressed = event.key;
-      const isValid = validateLetter(keyPressed);
-      if (!isValid) return;
-      setKeysPressed((prev) => {
-        const emptyValue = prev.findIndex((element) => element === "");
-
-        if (emptyValue === -1) return prev;
-
-        const updatedData = [...prev];
-        updatedData[emptyValue] = event.key;
-        return updatedData;
-      });
-    };
-
-    window.addEventListener("keydown", handleKeyPress);
-
-    return () => {
-      // Clean up the event listener when the component unmounts
-      window.removeEventListener("keydown", handleKeyPress);
-    };
-  }, []);
-
-  useEffect(() => {
     let emptyIndex = keysPressed.findIndex((element) => element === "");
     let keyPressed = keysPressed[emptyIndex - 1];
 
-    if (!keysPressed[0] || styleResults.length === 6) return;
+    const firstKeyPressed = keysPressed[0];
+    const allCharsSatussesSet = charsStatusses.length === 6;
+
+    if (!firstKeyPressed || allCharsSatussesSet) return;
     if (emptyIndex < 0) {
       // handle last typed char
       emptyIndex = keysPressed.length;
@@ -107,27 +87,27 @@ function Games({
         );
         allPrevSelectedKeys.pop(); //remove index of correct one (last one)
 
-        setStyleResults((prev) => {
+        setCharsStatusses((prev) => {
           const newResults = prev;
           allPrevSelectedKeys.forEach((key) => {
-            newResults[key] = "error";
+            newResults[key] = ECharStatus.Error;
           });
-          return [...newResults, "correct"];
+          return [...newResults, ECharStatus.Correct];
         });
       } else {
-        setStyleResults((prev) => {
-          return [...prev, "correct"];
+        setCharsStatusses((prev) => {
+          return [...prev, ECharStatus.Correct];
         });
       }
     } else if (
       numberOfCharacters[keyPressed as keyof typeof numberOfCharacters] > 0
     ) {
-      setStyleResults((prev) => {
-        return [...prev, "misplaced"];
+      setCharsStatusses((prev) => {
+        return [...prev, ECharStatus.Mislplaced];
       });
     } else {
-      setStyleResults((prev) => {
-        return [...prev, "error"];
+      setCharsStatusses((prev) => {
+        return [...prev, ECharStatus.Error];
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -136,13 +116,13 @@ function Games({
   return (
     <div className="games-container">
       <div className="games-fields-wrap">
-        {keysPressed.map((keyObj: string, index: number) => {
+        {keysPressed.map((value: string, index: number) => {
           return (
             <Field
-              nameOfClass={styleResults ? styleResults[index] : ""}
+              nameOfClass={charsStatusses ? charsStatusses[index] : null}
               key={index}
               gameStatus={gameStatus}
-              value={keyObj}
+              value={value}
             ></Field>
           );
         })}
@@ -160,4 +140,4 @@ function Games({
   );
 }
 
-export default Games;
+export default Game;

@@ -34,10 +34,11 @@
   color: whitesmoke;
 }
 
-.lineUp {
-  animation: 0.5s anim-lineUp ease-out;
+.line-up {
+  animation: 0.5s anim-line-up ease-out;
 }
-@keyframes anim-lineUp {
+
+@keyframes anim-line-up {
   0% {
     opacity: 0;
     transform: translateY(80%);

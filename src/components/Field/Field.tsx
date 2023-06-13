@@ -1,12 +1,12 @@
 import React from "react";
 
 import "./Field.style.css";
-import { EGameStatus } from "../../types";
+import { ECharStatus, EGameStatus } from "../../types";
 
 type Props = {
-  value?: any;
-  gameStatus?: EGameStatus;
-  nameOfClass?: string | null;
+  value: string;
+  gameStatus: EGameStatus;
+  nameOfClass: ECharStatus | null;
 };
 
 function Field({ value, gameStatus, nameOfClass }: Props) {

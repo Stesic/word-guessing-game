@@ -1,0 +1,11 @@
+.confetti-wrap {
+  width: 400px;
+  height: 200px;
+  position: relative;
+  margin-left: 300px;
+}
+
+.new-game-wrap {
+  position: relative;
+  z-index: 2;
+}
